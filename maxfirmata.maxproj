@@ -1,9 +1,9 @@
 {
-	"name" : "nodefirmata",
+	"name" : "maxfirmata",
 	"version" : 1,
 	"creationdate" : 3634990414,
-	"modificationdate" : 3634990867,
-	"viewrect" : [ 25.0, 70.0, 300.0, 500.0 ],
+	"modificationdate" : 3635751657,
+	"viewrect" : [ 264.0, 570.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
 	"showdependencies" : 1,
@@ -16,10 +16,44 @@
 				"toplevel" : 1,
 				"singleton" : 				{
 					"bootpath" : "~/dev/nodefirmata/patchers",
+					"projectrelativepath" : "../nodefirmata/patchers"
+				}
+
+			}
+,
+			"digitalin.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1,
+				"singleton" : 				{
+					"bootpath" : "~/dev/maxfirmata/patchers",
 					"projectrelativepath" : "./patchers"
 				}
 
 			}
+,
+			"analogin.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1,
+				"singleton" : 				{
+					"bootpath" : "~/dev/maxfirmata/patchers",
+					"projectrelativepath" : "./patchers"
+				}
+
+			}
+,
+			"digitalout.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1,
+				"singleton" : 				{
+					"bootpath" : "~/dev/maxfirmata/patchers",
+					"projectrelativepath" : "./patchers"
+				}
+
+			}
+
+		}
+,
+		"code" : 		{
 
 		}
 

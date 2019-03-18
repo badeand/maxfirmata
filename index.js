@@ -1,23 +1,7 @@
 const Serialport = require("serialport");
 const Board = require("firmata");
-
-
 const path = require('path');
 const Max = require('max-api');
-
-// This will be printed directly to the Max console
-Max.post(`Loaded the ${path.basename(__filename)} script`);
-
-// Use the 'addHandler' function to register a function for a particular message
-Max.addHandler("bang", () => {
-  Max.post("Who you think you bangin'?");
-});
-
-// Use the 'outlet' function to send messages out of node.script's outlet
-Max.addHandler("echo", (msg) => {
-  Max.outlet(msg);
-});
-
 
 Board.requestPort((error, port) => {
   if (error) {
@@ -27,15 +11,52 @@ Board.requestPort((error, port) => {
 
   const board = new Board(port.comName);
 
-  console.log(__filename);
-  console.log("------------------------------");
-
   Max.outlet('initializing');
 
   board.on("open", () => {
     Max.outlet('open');
+    Max.post('open');
   });
 
+  Max.addHandler("mode", (pin, mode) => {
+    switch (mode) {
+      case 'pwm':
+        Max.post(`mode pin ${pin} : pwm`);
+        board.pinMode(pin, board.MODES.PWM);
+        break;
+      case 'digitalin':
+        Max.post(`mode pin ${pin} : digital in`);
+        board.pinMode(pin, board.MODES.INPUT);
+        board.digitalRead(pin, (data) => {
+          Max.outlet(`${pin} digitalin ${data}`);
+        });
+        break;
+      case 'digitalout':
+        Max.post(`mode pin ${pin} : digital out`);
+        board.pinMode(pin, board.MODES.OUTPUT);
+        break;
+      case 'analogin':
+        Max.post(`mode pin ${pin} : analog in`);
+        board.pinMode(pin, board.MODES.ANALOG);
+        board.analogRead(pin, (data) => {
+          Max.outlet(`${pin} analogin ${data}`);
+        });
+        break;
+      default:
+    }
+  });
+  Max.addHandler("set", (mode, pin, state) => {
+    switch (mode) {
+      case 'digitalout':
+        Max.post(`set pin ${pin} : ${state}`);
+        let level =  state === 1 ? board.HIGH :  board.LOW;
+        board.digitalWrite(pin, level);
+        break;
+      default:
+    }
+  });
+
+  /*
   Max.addHandler("AO", (data1, data2) => {
     board.pinMode(3, board.MODES.PWM);
     board.analogWrite(3, data1)
@@ -56,5 +77,8 @@ Board.requestPort((error, port) => {
     });
     Max.outlet('connected');
   }, 4000);
+
+*/
+
 
 });
