@@ -2,9 +2,9 @@
 	"name" : "maxfirmata",
 	"version" : 1,
 	"creationdate" : 3634990414,
-	"modificationdate" : 3635751657,
+	"modificationdate" : 3635786763,
 	"viewrect" : [ 264.0, 570.0, 300.0, 500.0 ],
-	"autoorganize" : 1,
+	"autoorganize" : 0,
 	"hideprojectwindow" : 0,
 	"showdependencies" : 1,
 	"autolocalize" : 0,
@@ -21,14 +21,24 @@
 
 			}
 ,
+			"microcontroller.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"2_gate_NOR_4001.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"digitalout.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
 			"digitalin.maxpat" : 			{
 				"kind" : "patcher",
-				"local" : 1,
-				"singleton" : 				{
-					"bootpath" : "~/dev/maxfirmata/patchers",
-					"projectrelativepath" : "./patchers"
-				}
-
+				"local" : 1
 			}
 ,
 			"analogin.maxpat" : 			{
@@ -41,12 +51,55 @@
 
 			}
 ,
-			"digitalout.maxpat" : 			{
+			"NOR_gate_as_OR_gate_4001.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1,
+				"singleton" : 				{
+					"bootpath" : "~/dev/maxfirmata/patchers/NOR_gate_as_OR gate_4001",
+					"projectrelativepath" : "./patchers/NOR_gate_as_OR gate_4001"
+				}
+
+			}
+,
+			"comm.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1,
 				"singleton" : 				{
 					"bootpath" : "~/dev/maxfirmata/patchers",
 					"projectrelativepath" : "./patchers"
+				}
+
+			}
+
+		}
+,
+		"media" : 		{
+			"4001_Pinout.png" : 			{
+				"kind" : "imagefile",
+				"local" : 1
+			}
+,
+			"testmovie.mov" : 			{
+				"kind" : "moviefile",
+				"local" : 1,
+				"singleton" : 				{
+					"bootpath" : "~/dev/maxfirmata/media",
+					"projectrelativepath" : "./media"
+				}
+
+			}
+,
+			"NOR gate as OR gate.svg" : 			{
+				"kind" : "vectorimagefile",
+				"local" : 1
+			}
+,
+			"2_gate_NOR_4001.mov" : 			{
+				"kind" : "moviefile",
+				"local" : 1,
+				"singleton" : 				{
+					"bootpath" : "~/dev/maxfirmata/patchers/2_gate_NOR_4001",
+					"projectrelativepath" : "./patchers/2_gate_NOR_4001"
 				}
 
 			}
@@ -64,11 +117,19 @@
 	}
 ,
 	"searchpath" : 	{
+		"0" : 		{
+			"bootpath" : "~/dev/maxfirmata/nodejs",
+			"projectrelativepath" : "./nodejs",
+			"label" : "nodejs",
+			"recursive" : 1,
+			"enabled" : 1,
+			"includeincollective" : 1
+		}
 
 	}
 ,
 	"detailsvisible" : 0,
-	"amxdtype" : 1633771873,
+	"amxdtype" : 0,
 	"readonly" : 0,
 	"devpathtype" : 0,
 	"devpath" : ".",
